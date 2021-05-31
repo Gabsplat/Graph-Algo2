@@ -40,8 +40,12 @@ def createGraph(listVertices, listAristas=LinkedList()):
         # Itero por todas las aristas (con "paso" 2)
         while(currentArista != None and currentArista.nextNode != None):
             # Si el elemento es el vertice del grafo, entonces el siguiente es la conexión (dirigido)
-            if(Graph[i].head.value == currentArista.value):
+            graphElement = Graph[i].head
+
+            if(graphElement.value == currentArista.value):
                 append(Graph[i], currentArista.nextNode.value)
+            elif(graphElement.value == currentArista.nextNode.value):
+                append(Graph[i], currentArista.value)
 
             # Continuo con el siguiente par de vertices (arista)
             currentArista = currentArista.nextNode.nextNode
@@ -50,3 +54,16 @@ def createGraph(listVertices, listAristas=LinkedList()):
         currentVertice = currentVertice.nextNode
 
     return Graph
+
+
+'''
+def existPath(Grafo, v1, v2):
+    Descripción: Implementa la operación existe camino que busca si
+    existe un camino entre los vértices v1 y v2
+    Entrada: Grafo con la representación de Lista de Adyacencia, v1 y
+    v2 vértices en el grafo.
+    Salida: retorna True si existe camino entre v1 y v2, False en
+    caso contrario.
+'''
+
+# def existPath(Graph, v1, v2):
